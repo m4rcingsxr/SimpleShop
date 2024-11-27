@@ -13,7 +13,7 @@ import java.math.BigDecimal;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public abstract class AbstractProductDto {
+public abstract class AbstractProductDto extends AbstractAuditEntity{
 
     @Schema(description = "Unique identifier for the product", example = "123", accessMode = Schema.AccessMode.READ_ONLY)
     private Long id;
