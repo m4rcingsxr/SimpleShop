@@ -10,10 +10,9 @@ import lombok.NoArgsConstructor;
 import java.math.BigDecimal;
 
 @Data
-@Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public abstract class AbstractProductDto extends AbstractAuditEntity{
+public abstract class AbstractProductDto {
 
     @Schema(description = "Unique identifier for the product", example = "123", accessMode = Schema.AccessMode.READ_ONLY)
     private Long id;

@@ -1,0 +1,211 @@
+databaseChangeLog:
+  - changeSet:
+      id: 1732742143786-1
+      author: dev
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  autoIncrement: true
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: pk_brands
+                  name: id
+                  type: BIGINT
+              - column:
+                  name: created_at
+                  type: DATETIME
+              - column:
+                  name: created_by
+                  type: VARCHAR(255)
+              - column:
+                  name: updated_at
+                  type: DATETIME
+              - column:
+                  name: updated_by
+                  type: VARCHAR(255)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: name
+                  type: VARCHAR(255)
+            tableName: brands
+  - changeSet:
+      id: 1732742143786-2
+      author: dev
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  autoIncrement: true
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: pk_categories
+                  name: id
+                  type: BIGINT
+              - column:
+                  constraints:
+                    nullable: false
+                  name: name
+                  type: VARCHAR(255)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: enabled
+                  type: BOOLEAN
+              - column:
+                  name: all_parent_ids
+                  type: VARCHAR(255)
+              - column:
+                  name: parent_id
+                  type: BIGINT
+            tableName: categories
+  - changeSet:
+      id: 1732742143786-3
+      author: dev
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  autoIncrement: true
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: pk_products
+                  name: id
+                  type: BIGINT
+              - column:
+                  name: created_at
+                  type: DATETIME
+              - column:
+                  name: created_by
+                  type: VARCHAR(255)
+              - column:
+                  name: updated_at
+                  type: DATETIME
+              - column:
+                  name: updated_by
+                  type: VARCHAR(255)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: name
+                  type: VARCHAR(255)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: short_description
+                  type: VARCHAR(255)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: full_description
+                  type: VARCHAR(2550)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: in_stock
+                  type: BOOLEAN
+              - column:
+                  constraints:
+                    nullable: false
+                  name: weight
+                  type: DECIMAL
+              - column:
+                  constraints:
+                    nullable: false
+                  name: width
+                  type: DECIMAL
+              - column:
+                  constraints:
+                    nullable: false
+                  name: height
+                  type: DECIMAL
+              - column:
+                  constraints:
+                    nullable: false
+                  name: length
+                  type: DECIMAL
+              - column:
+                  constraints:
+                    nullable: false
+                  name: price
+                  type: DECIMAL
+              - column:
+                  constraints:
+                    nullable: false
+                  name: cost
+                  type: DECIMAL
+              - column:
+                  constraints:
+                    nullable: false
+                  name: discount_percent
+                  type: DECIMAL
+              - column:
+                  constraints:
+                    nullable: false
+                  name: category_id
+                  type: BIGINT
+              - column:
+                  constraints:
+                    nullable: false
+                  name: brand_id
+                  type: BIGINT
+            tableName: products
+  - changeSet:
+      id: 1732742143786-4
+      author: dev
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - addUniqueConstraint:
+            columnNames: name
+            constraintName: uc_brands_name
+            tableName: brands
+  - changeSet:
+      id: 1732742143786-5
+      author: dev
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - addUniqueConstraint:
+            columnNames: name
+            constraintName: uc_categories_name
+            tableName: categories
+  - changeSet:
+      id: 1732742143786-6
+      author: dev
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: parent_id
+            baseTableName: categories
+            constraintName: FK_CATEGORIES_ON_PARENT
+            referencedColumnNames: id
+            referencedTableName: categories
+  - changeSet:
+      id: 1732742143786-7
+      author: dev
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: brand_id
+            baseTableName: products
+            constraintName: FK_PRODUCTS_ON_BRAND
+            referencedColumnNames: id
+            referencedTableName: brands
+  - changeSet:
+      id: 1732742143786-8
+      author: dev
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: category_id
+            baseTableName: products
+            constraintName: FK_PRODUCTS_ON_CATEGORY
+            referencedColumnNames: id
+            referencedTableName: categories
+

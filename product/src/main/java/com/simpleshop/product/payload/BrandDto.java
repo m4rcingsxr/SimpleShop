@@ -9,10 +9,10 @@ import java.io.Serializable;
 import java.time.LocalDateTime;
 
 @Data
-@Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class BrandDto extends AbstractAuditEntity {
+@Schema(name = "BrandDto", description = "Brand request/response data structure used for API operations")
+public class BrandDto {
 
     @Schema(description = "Unique identifier for the brand", example = "123", accessMode = Schema.AccessMode.READ_ONLY)
     private Long id;

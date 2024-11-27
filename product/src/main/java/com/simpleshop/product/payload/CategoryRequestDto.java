@@ -1,20 +1,18 @@
 package com.simpleshop.product.payload;
 
 import io.swagger.v3.oas.annotations.media.Schema;
-import jakarta.persistence.Column;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
-import lombok.*;
-
-import java.io.Serializable;
-import java.util.Set;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Data
-@Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class CategoryDto extends AbstractAuditEntity {
+@Schema(name = "CategoryRequestDto", description = "Category request data structure used for API operations")
+public class CategoryRequestDto {
 
     @Schema(description = "Unique identifier for the category", example = "123", accessMode = Schema.AccessMode.READ_ONLY)
     private Long id;
@@ -28,6 +26,4 @@ public class CategoryDto extends AbstractAuditEntity {
     @Schema(description = "Indicates whether the category is enabled", example = "true", required = true)
     private Boolean enabled;
 
-    @Schema(description = "Children of category")
-    private Set<CategoryDto> children;
 }

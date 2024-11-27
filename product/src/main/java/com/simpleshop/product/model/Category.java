@@ -29,7 +29,7 @@ public class Category {
     private String name;
 
     @NotNull
-    @Column(name = "name", nullable = false)
+    @Column(name = "enabled", nullable = false)
     private Boolean enabled;
 
     @Column(name = "all_parent_ids")
@@ -52,5 +52,4 @@ public class Category {
         child.setParent(null);
         this.children.remove(child);
     }
-
 }

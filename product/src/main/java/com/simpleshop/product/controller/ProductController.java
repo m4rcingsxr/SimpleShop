@@ -1,7 +1,8 @@
 package com.simpleshop.product.controller;
 
 import com.simpleshop.product.payload.ErrorResponse;
-import com.simpleshop.product.payload.ProductDto;
+import com.simpleshop.product.payload.ProductRequestDto;
+import com.simpleshop.product.payload.ProductResponseDto;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.media.Content;
@@ -26,7 +27,7 @@ public class ProductController {
             description = "Allows administrators to create a new product by providing all necessary details, such as name, description, price, stock status, and more.",
             responses = {
                     @ApiResponse(responseCode = "201", description = "Product successfully created", content = {
-                            @Content(mediaType = "application/json", schema = @Schema(implementation = ProductDto.class))
+                            @Content(mediaType = "application/json", schema = @Schema(implementation = ProductResponseDto.class))
                     }),
                     @ApiResponse(responseCode = "400", description = "Invalid product data provided", content = {
                             @Content(mediaType = "application/json", schema = @Schema(implementation = ErrorResponse.class))
@@ -40,8 +41,8 @@ public class ProductController {
             }
     )
     @PostMapping("/admin/products")
-    public ResponseEntity<ProductDto> createProduct(
-            @Valid @RequestBody(required = false) ProductDto productDto
+    public ResponseEntity<ProductResponseDto> createProduct(
+            @Valid @RequestBody(required = false) ProductRequestDto productDto
     ) {
         return new ResponseEntity<>(HttpStatus.NOT_IMPLEMENTED);
     }
@@ -56,7 +57,7 @@ public class ProductController {
             },
             responses = {
                     @ApiResponse(responseCode = "200", description = "Paginated list of products", content = {
-                            @Content(mediaType = "application/json", schema = @Schema(implementation = ProductDto.class))
+                            @Content(mediaType = "application/json", schema = @Schema(implementation = ProductResponseDto.class))
                     }),
                     @ApiResponse(responseCode = "400", description = "Invalid query parameters", content = {
                             @Content(mediaType = "application/json", schema = @Schema(implementation = ErrorResponse.class))
@@ -67,7 +68,7 @@ public class ProductController {
             }
     )
     @GetMapping("/admin/products")
-    public ResponseEntity<List<ProductDto>> listProductsByPage(
+    public ResponseEntity<List<ProductResponseDto>> listProductsByPage(
             @RequestParam(value = "page", defaultValue = "1") int page,
             @RequestParam(value = "sortField", defaultValue = "name") String sortField,
             @RequestParam(value = "sortDir", defaultValue = "ASC") String sortDir) {
@@ -82,7 +83,7 @@ public class ProductController {
             },
             responses = {
                     @ApiResponse(responseCode = "200", description = "Product details retrieved", content = {
-                            @Content(mediaType = "application/json", schema = @Schema(implementation = ProductDto.class))
+                            @Content(mediaType = "application/json", schema = @Schema(implementation = ProductResponseDto.class))
                     }),
                     @ApiResponse(responseCode = "400", description = "Invalid product ID", content = {
                             @Content(mediaType = "application/json", schema = @Schema(implementation = ErrorResponse.class))
@@ -96,7 +97,7 @@ public class ProductController {
             }
     )
     @GetMapping("/admin/products/{id}")
-    public ResponseEntity<ProductDto> getProductById(
+    public ResponseEntity<ProductResponseDto> getProductById(
             @PathVariable("id") Long id) {
         return new ResponseEntity<>(HttpStatus.NOT_IMPLEMENTED);
     }
@@ -109,7 +110,7 @@ public class ProductController {
             },
             responses = {
                     @ApiResponse(responseCode = "200", description = "Product updated successfully", content = {
-                            @Content(mediaType = "application/json", schema = @Schema(implementation = ProductDto.class))
+                            @Content(mediaType = "application/json", schema = @Schema(implementation = ProductResponseDto.class))
                     }),
                     @ApiResponse(responseCode = "400", description = "Invalid product data", content = {
                             @Content(mediaType = "application/json", schema = @Schema(implementation = ErrorResponse.class))
@@ -123,9 +124,9 @@ public class ProductController {
             }
     )
     @PutMapping("/admin/products/{id}")
-    public ResponseEntity<ProductDto> updateProduct(
+    public ResponseEntity<ProductResponseDto> updateProduct(
             @PathVariable("id") Long id,
-            @Valid @RequestBody ProductDto productDto) {
+            @Valid @RequestBody ProductRequestDto productDto) {
         return new ResponseEntity<>(HttpStatus.NOT_IMPLEMENTED);
     }
 
@@ -168,7 +169,7 @@ public class ProductController {
             },
             responses = {
                     @ApiResponse(responseCode = "200", description = "Paginated list of products", content = {
-                            @Content(mediaType = "application/json", schema = @Schema(implementation = ProductDto.class))
+                            @Content(mediaType = "application/json", schema = @Schema(implementation = ProductResponseDto.class))
                     }),
                     @ApiResponse(responseCode = "400", description = "Invalid query parameters", content = {
                             @Content(mediaType = "application/json", schema = @Schema(implementation = ErrorResponse.class))
@@ -179,7 +180,7 @@ public class ProductController {
             }
     )
     @GetMapping("/client/products")
-    public ResponseEntity<List<ProductDto>> clientListProductsByPage(
+    public ResponseEntity<List<ProductResponseDto>> clientListProductsByPage(
             @RequestParam(value = "page", defaultValue = "1") int page,
             @RequestParam(value = "sortField", defaultValue = "name") String sortField,
             @RequestParam(value = "sortDir", defaultValue = "ASC") String sortDir,
@@ -197,7 +198,7 @@ public class ProductController {
             },
             responses = {
                     @ApiResponse(responseCode = "200", description = "Product details retrieved", content = {
-                            @Content(mediaType = "application/json", schema = @Schema(implementation = ProductDto.class))
+                            @Content(mediaType = "application/json", schema = @Schema(implementation = ProductResponseDto.class))
                     }),
                     @ApiResponse(responseCode = "400", description = "Invalid product ID", content = {
                             @Content(mediaType = "application/json", schema = @Schema(implementation = ErrorResponse.class))
@@ -211,7 +212,7 @@ public class ProductController {
             }
     )
     @GetMapping("/client/products/{id}")
-    public ResponseEntity<ProductDto> clientGetProductById(@PathVariable("id") Long id) {
+    public ResponseEntity<ProductResponseDto> clientGetProductById(@PathVariable("id") Long id) {
         return new ResponseEntity<>(HttpStatus.NOT_IMPLEMENTED);
     }
 }

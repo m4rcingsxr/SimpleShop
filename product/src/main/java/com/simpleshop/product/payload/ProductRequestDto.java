@@ -13,7 +13,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Schema(name = "ProductRequestDto", description = "Product request data structure used for API operations")
-public class ProductDto extends AbstractProductDto {
+public class ProductRequestDto extends AbstractProductDto {
 
     @NotNull
     @Positive
