@@ -21,6 +21,7 @@ communication, scalability, resilience, and observability
     - OpenAPI specification
     - Swagger tools
     - Liquibase
+    - Testcontainers
 2. Tools and Infrastructure
     - Docker
     - Helm
@@ -160,6 +161,8 @@ communication, scalability, resilience, and observability
 
 ## TODO:
 
+- [ ] OpenAPI specifications
+- [ ] Mysql Database
 - [ ] Keycloak auth
 - [ ] Cart service
 - [ ] Order service
@@ -172,4 +175,9 @@ communication, scalability, resilience, and observability
 - [ ] Admin API gateway
 - [ ] Client API gateway
 - [ ] Config Server
+
+
+## How to run 
+- Update hosts /etc/hosts
+  - 127.0.0.1 development.simpleshop
 

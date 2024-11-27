@@ -1,6 +1,7 @@
 package com.simpleshop.product.controller;
 
-import com.simpleshop.product.payload.BrandDto;
+import com.simpleshop.product.payload.BrandRequestDto;
+import com.simpleshop.product.payload.BrandResponseDto;
 import com.simpleshop.product.payload.ErrorResponse;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
@@ -26,7 +27,7 @@ public class BrandController {
             description = "Allows administrators to create a new brand by providing its name.",
             responses = {
                     @ApiResponse(responseCode = "201", description = "Brand successfully created", content = {
-                            @Content(mediaType = "application/json", schema = @Schema(implementation = BrandDto.class))
+                            @Content(mediaType = "application/json", schema = @Schema(implementation = BrandResponseDto.class))
                     }),
                     @ApiResponse(responseCode = "400", description = "Invalid brand data provided", content = {
                             @Content(mediaType = "application/json", schema = @Schema(implementation = ErrorResponse.class))
@@ -40,8 +41,8 @@ public class BrandController {
             }
     )
     @PostMapping("/admin/brands")
-    public ResponseEntity<BrandDto> createBrand(
-            @Valid @RequestBody BrandDto brandDto
+    public ResponseEntity<BrandResponseDto> createBrand(
+            @Valid @RequestBody BrandRequestDto brandRequestDto
     ) {
         return new ResponseEntity<>(HttpStatus.NOT_IMPLEMENTED);
     }
@@ -56,7 +57,7 @@ public class BrandController {
             },
             responses = {
                     @ApiResponse(responseCode = "200", description = "Paginated list of brands", content = {
-                            @Content(mediaType = "application/json", schema = @Schema(implementation = BrandDto.class))
+                            @Content(mediaType = "application/json", schema = @Schema(implementation = BrandResponseDto.class))
                     }),
                     @ApiResponse(responseCode = "400", description = "Invalid query parameters", content = {
                             @Content(mediaType = "application/json", schema = @Schema(implementation = ErrorResponse.class))
@@ -67,7 +68,7 @@ public class BrandController {
             }
     )
     @GetMapping("/admin/brands")
-    public ResponseEntity<List<BrandDto>> listBrandsByPage(
+    public ResponseEntity<List<BrandRequestDto>> listBrandsByPage(
             @RequestParam(value = "page", defaultValue = "1") int page,
             @RequestParam(value = "sortField", defaultValue = "name") String sortField,
             @RequestParam(value = "sortDir", defaultValue = "ASC") String sortDir) {
@@ -82,7 +83,7 @@ public class BrandController {
             },
             responses = {
                     @ApiResponse(responseCode = "200", description = "Brand details retrieved", content = {
-                            @Content(mediaType = "application/json", schema = @Schema(implementation = BrandDto.class))
+                            @Content(mediaType = "application/json", schema = @Schema(implementation = BrandResponseDto.class))
                     }),
                     @ApiResponse(responseCode = "400", description = "Invalid brand ID", content = {
                             @Content(mediaType = "application/json", schema = @Schema(implementation = ErrorResponse.class))
@@ -96,7 +97,7 @@ public class BrandController {
             }
     )
     @GetMapping("/admin/brands/{id}")
-    public ResponseEntity<BrandDto> getBrandById(
+    public ResponseEntity<BrandResponseDto> getBrandById(
             @PathVariable("id") Long id) {
         return new ResponseEntity<>(HttpStatus.NOT_IMPLEMENTED);
     }
@@ -109,7 +110,7 @@ public class BrandController {
             },
             responses = {
                     @ApiResponse(responseCode = "200", description = "Brand updated successfully", content = {
-                            @Content(mediaType = "application/json", schema = @Schema(implementation = BrandDto.class))
+                            @Content(mediaType = "application/json", schema = @Schema(implementation = BrandResponseDto.class))
                     }),
                     @ApiResponse(responseCode = "400", description = "Invalid brand data", content = {
                             @Content(mediaType = "application/json", schema = @Schema(implementation = ErrorResponse.class))
@@ -123,9 +124,9 @@ public class BrandController {
             }
     )
     @PutMapping("/admin/brands/{id}")
-    public ResponseEntity<BrandDto> updateBrand(
+    public ResponseEntity<BrandResponseDto> updateBrand(
             @PathVariable("id") Long id,
-            @Valid @RequestBody BrandDto brandDto) {
+            @Valid @RequestBody BrandRequestDto brandRequestDto) {
         return new ResponseEntity<>(HttpStatus.NOT_IMPLEMENTED);
     }
 
