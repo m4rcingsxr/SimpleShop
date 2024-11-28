@@ -3,6 +3,7 @@ package com.simpleshop.product.controller;
 import com.simpleshop.product.payload.ErrorResponse;
 import com.simpleshop.product.payload.ProductRequestDto;
 import com.simpleshop.product.payload.ProductResponseDto;
+import com.simpleshop.product.payload.ValidationErrorResponse;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.media.Content;
@@ -30,7 +31,7 @@ public class ProductController {
                             @Content(mediaType = "application/json", schema = @Schema(implementation = ProductResponseDto.class))
                     }),
                     @ApiResponse(responseCode = "400", description = "Invalid product data provided", content = {
-                            @Content(mediaType = "application/json", schema = @Schema(implementation = ErrorResponse.class))
+                            @Content(mediaType = "application/json", schema = @Schema(implementation = ValidationErrorResponse.class))
                     }),
                     @ApiResponse(responseCode = "403", description = "Access denied", content = {
                             @Content(mediaType = "application/json", schema = @Schema(implementation = ErrorResponse.class))
@@ -42,7 +43,7 @@ public class ProductController {
     )
     @PostMapping("/admin/products")
     public ResponseEntity<ProductResponseDto> createProduct(
-            @Valid @RequestBody(required = false) ProductRequestDto productDto
+            @Valid @RequestBody(required = false) ProductRequestDto productRequestDto
     ) {
         return new ResponseEntity<>(HttpStatus.NOT_IMPLEMENTED);
     }
@@ -60,7 +61,7 @@ public class ProductController {
                             @Content(mediaType = "application/json", schema = @Schema(implementation = ProductResponseDto.class))
                     }),
                     @ApiResponse(responseCode = "400", description = "Invalid query parameters", content = {
-                            @Content(mediaType = "application/json", schema = @Schema(implementation = ErrorResponse.class))
+                            @Content(mediaType = "application/json", schema = @Schema(implementation = ValidationErrorResponse.class))
                     }),
                     @ApiResponse(responseCode = "500", description = "Unexpected server error", content = {
                             @Content(mediaType = "application/json", schema = @Schema(implementation = ErrorResponse.class))
@@ -86,7 +87,7 @@ public class ProductController {
                             @Content(mediaType = "application/json", schema = @Schema(implementation = ProductResponseDto.class))
                     }),
                     @ApiResponse(responseCode = "400", description = "Invalid product ID", content = {
-                            @Content(mediaType = "application/json", schema = @Schema(implementation = ErrorResponse.class))
+                            @Content(mediaType = "application/json", schema = @Schema(implementation = ValidationErrorResponse.class))
                     }),
                     @ApiResponse(responseCode = "404", description = "Product not found", content = {
                             @Content(mediaType = "application/json", schema = @Schema(implementation = ErrorResponse.class))
@@ -113,7 +114,7 @@ public class ProductController {
                             @Content(mediaType = "application/json", schema = @Schema(implementation = ProductResponseDto.class))
                     }),
                     @ApiResponse(responseCode = "400", description = "Invalid product data", content = {
-                            @Content(mediaType = "application/json", schema = @Schema(implementation = ErrorResponse.class))
+                            @Content(mediaType = "application/json", schema = @Schema(implementation = ValidationErrorResponse.class))
                     }),
                     @ApiResponse(responseCode = "404", description = "Product not found", content = {
                             @Content(mediaType = "application/json", schema = @Schema(implementation = ErrorResponse.class))
@@ -139,7 +140,7 @@ public class ProductController {
             responses = {
                     @ApiResponse(responseCode = "204", description = "Product deleted successfully"),
                     @ApiResponse(responseCode = "400", description = "Invalid product ID", content = {
-                            @Content(mediaType = "application/json", schema = @Schema(implementation = ErrorResponse.class))
+                            @Content(mediaType = "application/json", schema = @Schema(implementation = ValidationErrorResponse.class))
                     }),
                     @ApiResponse(responseCode = "404", description = "Product not found", content = {
                             @Content(mediaType = "application/json", schema = @Schema(implementation = ErrorResponse.class))
@@ -172,7 +173,7 @@ public class ProductController {
                             @Content(mediaType = "application/json", schema = @Schema(implementation = ProductResponseDto.class))
                     }),
                     @ApiResponse(responseCode = "400", description = "Invalid query parameters", content = {
-                            @Content(mediaType = "application/json", schema = @Schema(implementation = ErrorResponse.class))
+                            @Content(mediaType = "application/json", schema = @Schema(implementation = ValidationErrorResponse.class))
                     }),
                     @ApiResponse(responseCode = "500", description = "Unexpected server error", content = {
                             @Content(mediaType = "application/json", schema = @Schema(implementation = ErrorResponse.class))
@@ -201,7 +202,7 @@ public class ProductController {
                             @Content(mediaType = "application/json", schema = @Schema(implementation = ProductResponseDto.class))
                     }),
                     @ApiResponse(responseCode = "400", description = "Invalid product ID", content = {
-                            @Content(mediaType = "application/json", schema = @Schema(implementation = ErrorResponse.class))
+                            @Content(mediaType = "application/json", schema = @Schema(implementation = ValidationErrorResponse.class))
                     }),
                     @ApiResponse(responseCode = "404", description = "Product not found", content = {
                             @Content(mediaType = "application/json", schema = @Schema(implementation = ErrorResponse.class))
