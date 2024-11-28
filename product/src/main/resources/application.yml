@@ -4,5 +4,11 @@ server:
 spring:
   application:
     name: "products"
-  profiles:
-    active: dev
+    version: 1.0
+  config:
+    import: "configserver:http://localhost:8071/"
+  rabbitmq:
+    host: "localhost"
+    port: 5672
+    username: "guest"
+    password: "guest"
