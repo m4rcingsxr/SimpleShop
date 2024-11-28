@@ -2,38 +2,29 @@ package com.simpleshop.product.payload;
 
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.validation.constraints.*;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
 
-@Data
-@NoArgsConstructor
-@AllArgsConstructor
 @Schema(name = "ErrorResponse", description = "Details about an error returned by the API")
-public class ErrorResponse {
+public record ErrorResponse(
 
-    @Min(100)
-    @Max(599)
-    @Schema(description = "HTTP status code for the error (e.g., 400 for Bad Request)", example = "500", required =
-            true)
-    private int status;
+        @Min(value = 100, message = "Status must be between 100 and 599.")
+        @Max(value = 599, message = "Status must be between 100 and 599.")
+        @Schema(description = "HTTP status code for the error (e.g., 400 for Bad Request)", example = "500", required = true)
+        int status,
 
-    @NotBlank
-    @Size(max = 100)
-    @Schema(description = "Short description of the error type", example = "Internal server error", required = true)
-    private String error;
+        @NotBlank(message = "Error type cannot be blank.")
+        @Size(max = 100, message = "Error type must not exceed 100 characters.")
+        @Schema(description = "Short description of the error type", example = "Internal server error", required = true)
+        String error,
 
-    @NotBlank
-    @Size(max = 500)
-    @Schema(description = "Detailed explanation of the error", example = "Sorry internal server occurred, please " +
-            "contact with administration or try again later", required = true)
-    private String message;
+        @NotBlank(message = "Message cannot be blank.")
+        @Size(max = 500, message = "Message must not exceed 500 characters.")
+        @Schema(description = "Detailed explanation of the error", example = "Sorry internal server occurred, please contact administration or try again later", required = true)
+        String message,
 
-    @NotNull
-    @Schema(description = "The timestamp of the error occurrence in ISO 8601 format", example = "2024-11-27T12:00:00"
-            , required = true, format = "date-time")
-    private LocalDateTime timestamp;
+        @NotNull(message = "Timestamp cannot be null.")
+        @Schema(description = "The timestamp of the error occurrence in ISO 8601 format", example = "2024-11-27T12:00:00", required = true, format = "date-time")
+        LocalDateTime timestamp
+) {
 }

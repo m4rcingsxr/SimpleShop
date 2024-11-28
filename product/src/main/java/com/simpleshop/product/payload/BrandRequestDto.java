@@ -11,4 +11,5 @@ public record BrandRequestDto(
         @Size(max = 255)
         @Schema(description = "Name of the brand", example = "Smartphone", required = true)
         String name
+
 ) {}
