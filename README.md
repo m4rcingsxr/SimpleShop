@@ -54,7 +54,7 @@ communication, scalability, resilience, and observability
    work among multiple teams. Designing the API as a priority allows other teams to build their solutions based on that
    API when using the application as a backing service.
 
-    - Use Swagger tools to design and document APIs.
+    - Use OpenAPI to design and document APIs.
 
 3. Dependency Management
    : Explicitly declare and manage service dependencies.
@@ -62,7 +62,7 @@ communication, scalability, resilience, and observability
    these dependencies. By following this approach, we maintain a clear and controller dependency management process for
    our application.
 
-    - Use Maven or Gradle for dependency management.
+    - Use Maven for dependency management.
     - Containerize dependencies like databases and message brokers using Docker.
 
 4. Design, Build, Release, and Run
