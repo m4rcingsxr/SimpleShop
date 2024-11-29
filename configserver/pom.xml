@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>com.simpleshop</groupId>
 	<artifactId>configserver</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>1.0.0</version>
 	<name>configserver</name>
 	<description>Configuration Server for SimpleShop microservices</description>
 	<url/>
@@ -73,6 +73,16 @@
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
+			</plugin>
+			<plugin>
+				<groupId>com.google.cloud.tools</groupId>
+				<artifactId>jib-maven-plugin</artifactId>
+				<version>3.4.2</version>
+				<configuration>
+					<to>
+						<image>m4rcingsxr/${project.artifactId}:${version}</image>
+					</to>
+				</configuration>
 			</plugin>
 		</plugins>
 	</build>
