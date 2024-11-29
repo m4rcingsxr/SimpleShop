@@ -30,6 +30,16 @@ management:
     web:
       exposure:
         include: "*"
+  health:
+    readinessstate: # The readiness probe determines if the application is ready to handle requests
+      enabled: true
+    livenessstate: # The liveness probe determines if the application is alive
+      enabled: true
+  endpoint:
+    health:
+      probes: # enabling probes for health checks in the application
+        enabled: true
+
 
 encrypt:
   key: "45D81EC1EF61DF9AD8D3E5BB397F9"
